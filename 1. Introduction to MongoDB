@@ -1,0 +1,51 @@
+Introduction to MongoDB :
+
+1. Started in Feb 2009.
+2. MongoDB is a non-relational , Document-Oriented Database.
+3. It stores data in the form of database.
+4. It uses BSON (Binary JSON) to query database.
+5. BSON is Binary representation to store data in JSON Format.
+6. Using BSON we can parse data easily and fast.
+
+JSON Issues :
+
+1. JSON is text-based format and text parsing is very slow.
+2. JSON's readable format is far from space-efficient, another database concern.
+3. JSON only supports a limited number of basic data types.
+
+BSON Overcomes above all 3 issues.
+
+JSON :
+
+1. Standard file format.
+2. less fast.
+3. Consumes less space.
+4. use for Transmission of data.
+
+BSON :
+
+1. Binary file format.
+2. Faster 
+3. More space is consumed.
+4. Use for Storage of data.
+
+
+IMP :
+
+** MongoDB stores data in BSON format both internally, and over the network, but that doesn't mean you can't think of 
+MongoDB as a JSON database. Anything you can represent in JSON can be natively stored in MongoDB, and retrieved just as easily in JSON.
+
+
+In MongoDB :
+
+Table  = Collection
+Row    = Document
+Column = Field
+
+Example :
+
+In MongoDB, in one Document we have 6 values, then in second Document we can able to write 7 values also. 
+MongoDB Provides us Flexibility and Scalability.
+
+
+
