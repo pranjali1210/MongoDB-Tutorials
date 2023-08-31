@@ -1,0 +1,33 @@
+Link to Install MongoDB :
+
+https://www.mongodb.com/try/download/community
+
+
+Command 1:
+
+"C:\Program Files\MongoDB\Server\7.0\bin\mongod.exe" --version
+
+Output :
+
+db version v7.0.0
+Build Info: {
+    "version": "7.0.0",
+    "gitVersion": "37d84072b5c5b9fd723db5fa133fb202ad2317f1",
+    "modules": [],
+    "allocator": "tcmalloc",
+    "environment": {
+        "distmod": "windows",
+        "distarch": "x86_64",
+        "target_arch": "x86_64"
+    }
+}
+
+Command 2:
+
+"C:\Program Files\MongoDB\Server\7.0\bin\mongod.exe"
+
+command 3 :
+
+mongo
+
+-->> Before using this command you must need to add mongo bin folder path in Environmental variable.
