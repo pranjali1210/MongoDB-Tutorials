@@ -1,0 +1,64 @@
+1. show dbs : This command will show available databases.
+
+2. use  database_name :- MongoDB use DATABASE_NAME is used to create database. The command will create a new database if it doesn't exist, otherwise it will return the existing database.
+
+3. db.thapadata.insertOne({}) : It will create One Collection in Database.
+
+4. db : It will show the name of Currently active database.
+
+5. show collections : It will show the Collections present in Database.
+
+6. db.thapadata.find() : It will find the document present in thapadata collection.
+
+7. db.thapadata.find().pretty() : It will show document in easy-to-read format.
+
+
+8 . Execution In CMD :
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use thapatechnical
+switched to db thapatechnical
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> db.thapadata.insertOne({name:"ReactJS", type:"Front End", videos:80 })
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("64f09c199060ad2bd7c5209f")
+}
+> db.thapadata.insertOne({name:"ReactJS", type:"Front End", videos:80 , active:true})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("64f09c3a9060ad2bd7c520a0")
+}
+> show dbs
+admin           0.000GB
+config          0.000GB
+local           0.000GB
+thapatechnical  0.000GB
+> db
+thapatechnical
+> show collections
+thapadata
+> db.thapadata.find()
+{ "_id" : ObjectId("64f09c199060ad2bd7c5209f"), "name" : "ReactJS", "type" : "Front End", "videos" : 80 }
+{ "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"), "name" : "ReactJS", "type" : "Front End", "videos" : 80, "active" : true }
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f09c199060ad2bd7c5209f"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80
+}
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : true
+}
+>
