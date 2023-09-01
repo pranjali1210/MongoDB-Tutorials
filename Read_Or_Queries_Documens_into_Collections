@@ -1,0 +1,214 @@
+Read Operations
+Read operations retrieve documents from a collection; i.e. query a collection for documents. MongoDB provides the following methods to read documents from a collection:
+
+db.collection.find()
+
+pretty() : shows documents in easy-to-read format.
+
+db.collection.findOne() : It finds and return only 1 document from collection.
+
+skip() : In MongoDB, the skip() method will skip the first n document from the query result, you just need to pass the number of records/documents to be skipped.
+example : n=2
+skip(2) :--> It will skip first 2 documents.
+** Execution :
+
+> show dbs
+admin           0.000GB
+config          0.000GB
+local           0.000GB
+thapatechnical  0.000GB
+> use thapatechnical
+switched to db thapatechnical
+> db
+thapatechnical
+> show collections
+thapadata
+> db.thapadata.find()
+{ "_id" : ObjectId("64f09c199060ad2bd7c5209f"), "name" : "ReactJS", "type" : "Front End", "videos" : 80 }
+{ "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"), "name" : "ReactJS", "type" : "Front End", "videos" : 80, "active" : true }
+{ "_id" : ObjectId("64f1740f8da8aea393fe9c7e"), "name" : "mongodb", "type" : "database", "videos" : 47, "active" : true }
+{ "_id" : ObjectId("64f174b68da8aea393fe9c7f"), "name" : "Nodejs", "type" : "Backend", "videos" : 40, "active" : true }
+{ "_id" : ObjectId("64f174b68da8aea393fe9c80"), "name" : "Javascript" }
+{ "_id" : ObjectId("64f174d78da8aea393fe9c81"), "name" : "Nodejs", "type" : "Backend", "videos" : 40, "active" : true }
+{ "_id" : ObjectId("64f174d78da8aea393fe9c82"), "name" : "Javascript", "type" : "Scripting", "videos" : 50, "active" : true }
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f09c199060ad2bd7c5209f"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80
+}
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174b68da8aea393fe9c7f"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 40,
+        "active" : true
+}
+{ "_id" : ObjectId("64f174b68da8aea393fe9c80"), "name" : "Javascript" }
+{
+        "_id" : ObjectId("64f174d78da8aea393fe9c81"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 40,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174d78da8aea393fe9c82"),
+        "name" : "Javascript",
+        "type" : "Scripting",
+        "videos" : 50,
+        "active" : true
+}
+> db.thapadata.find({name:"mongodb"})
+{ "_id" : ObjectId("64f1740f8da8aea393fe9c7e"), "name" : "mongodb", "type" : "database", "videos" : 47, "active" : true }
+>
+> db.thapadata.find({name:"Mongodb"})
+> db.thapadata.find({name:"mongodb"}).pretty()
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+> db.thapadata.find({name:"mongodb"},{name:1}).pretty()
+{ "_id" : ObjectId("64f1740f8da8aea393fe9c7e"), "name" : "mongodb" }
+> db.thapadata.find({name:"mongodb"},{_id:0,name:1}).pretty()
+{ "name" : "mongodb" }
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f09c199060ad2bd7c5209f"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80
+}
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174b68da8aea393fe9c7f"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 40,
+        "active" : true
+}
+{ "_id" : ObjectId("64f174b68da8aea393fe9c80"), "name" : "Javascript" }
+{
+        "_id" : ObjectId("64f174d78da8aea393fe9c81"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 40,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174d78da8aea393fe9c82"),
+        "name" : "Javascript",
+        "type" : "Scripting",
+        "videos" : 50,
+        "active" : true
+}
+> db.thapadata.find({active:true}).pretty()
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174b68da8aea393fe9c7f"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 40,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174d78da8aea393fe9c81"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 40,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174d78da8aea393fe9c82"),
+        "name" : "Javascript",
+        "type" : "Scripting",
+        "videos" : 50,
+        "active" : true
+}
+> db.thapadata.find({active:true}).pretty().limit(1)
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : true
+}
+> db.thapadata.find({active:true}).pretty().limit(2)
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+> db.thapadata.findOne({active:true}).pretty()
+2023-09-01T11:24:23.327+0530 E  QUERY    [js] uncaught exception: TypeError: db.thapadata.findOne(...).pretty is not a function :
+@(shell):1:1
+> db.thapadata.findOne({active:true})
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : true
+}
+> db.thapadata.find({active:true}).pretty().limit(1).skip()
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : true
+}
+>
