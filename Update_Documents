@@ -1,0 +1,82 @@
+Update Operations
+
+Update operations modify existing documents in a collection. MongoDB provides the following methods to update documents of a collection:
+
+db.collection.updateOne() : Update one document
+
+db.collection.updateMany() : Update multiple documents
+
+$set operator use to set / replace value.
+
+** Execution :
+
+> show dbs
+admin           0.000GB
+config          0.000GB
+local           0.000GB
+thapatechnical  0.000GB
+> use thapatechnical
+switched to db thapatechnical
+> db
+thapatechnical
+> show collections
+thapadata
+> db.thapadata.find()
+{ "_id" : ObjectId("64f09c199060ad2bd7c5209f"), "name" : "ReactJS", "type" : "Front End", "videos" : 80, "active" : false }
+{ "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"), "name" : "ReactJS", "type" : "Front End", "videos" : 80, "active" : false }
+{ "_id" : ObjectId("64f1740f8da8aea393fe9c7e"), "name" : "mongodb", "type" : "database", "videos" : 47, "active" : true }
+{ "_id" : ObjectId("64f174b68da8aea393fe9c7f"), "name" : "Nodejs", "type" : "Backend", "videos" : 40, "active" : true }
+{ "_id" : ObjectId("64f174b68da8aea393fe9c80"), "name" : "Javascript", "type" : "Full Stack" }
+{ "_id" : ObjectId("64f174d78da8aea393fe9c81"), "name" : "Nodejs", "type" : "Backend", "videos" : 40, "active" : true }
+{ "_id" : ObjectId("64f174d78da8aea393fe9c82"), "name" : "Javascript", "type" : "Scripting", "videos" : 50, "active" : true }
+> db.thapadata.updateMany({type:"Front End"},{$set:{active:false}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 0 }
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f09c199060ad2bd7c5209f"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : false
+}
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : false
+}
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174b68da8aea393fe9c7f"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 40,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174b68da8aea393fe9c80"),
+        "name" : "Javascript",
+        "type" : "Full Stack"
+}
+{
+        "_id" : ObjectId("64f174d78da8aea393fe9c81"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 40,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174d78da8aea393fe9c82"),
+        "name" : "Javascript",
+        "type" : "Scripting",
+        "videos" : 50,
+        "active" : true
+}
+>
