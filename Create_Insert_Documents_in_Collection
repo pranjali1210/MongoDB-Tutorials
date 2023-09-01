@@ -1,0 +1,127 @@
+Create Operations:
+
+Create or insert operations add new documents to a collection. If the collection does not currently exist, insert operations will create the collection.
+
+MongoDB provides the following methods to insert documents into a collection:
+
+1. db.collection.insertOne() : 
+inserts a single document into a collection.
+
+2. db.collection.insertMany() :
+can insert multiple documents into a collection. Pass an array of documents to the method.
+
+** Execution :
+
+> show dbs
+admin           0.000GB
+config          0.000GB
+local           0.000GB
+thapatechnical  0.000GB
+> db
+test
+> use thapatechnical
+switched to db thapatechnical
+> db
+thapatechnical
+> db.thapatechnical.find().pretty()
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f09c199060ad2bd7c5209f"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80
+}
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : true
+}
+> db.thapadata.insertOne({name:"mongodb", type:"database", videos:47, active:true})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("64f1740f8da8aea393fe9c7e")
+}
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f09c199060ad2bd7c5209f"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80
+}
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+> db.thapadata.insertMany([{name:"Nodejs",type:"Backend",videos:40,active:true},{name:"Javascript"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("64f174b68da8aea393fe9c7f"),
+                ObjectId("64f174b68da8aea393fe9c80")
+        ]
+}
+> db.thapadata.insertMany([{name:"Nodejs",type:"Backend",videos:40,active:true},{name:"Javascript",type:"Scripting",videos:50,active:true}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("64f174d78da8aea393fe9c81"),
+                ObjectId("64f174d78da8aea393fe9c82")
+        ]
+}
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f09c199060ad2bd7c5209f"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80
+}
+{
+        "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"),
+        "name" : "ReactJS",
+        "type" : "Front End",
+        "videos" : 80,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174b68da8aea393fe9c7f"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 40,
+        "active" : true
+}
+{ "_id" : ObjectId("64f174b68da8aea393fe9c80"), "name" : "Javascript" }
+{
+        "_id" : ObjectId("64f174d78da8aea393fe9c81"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 40,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174d78da8aea393fe9c82"),
+        "name" : "Javascript",
+        "type" : "Scripting",
+        "videos" : 50,
+        "active" : true
+}
+>
+
