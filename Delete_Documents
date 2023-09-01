@@ -1,0 +1,200 @@
+db.thapadata.deleteOne({type:"database"}) :
+It will delete the very first document which is having
+type as database.
+
+db.thapadata.deleteMany({type:"Full Stack"}) :
+It will delete all documents which is having type as Full Stack.
+
+** Execution :
+
+> db
+test
+> show dbs
+admin           0.000GB
+config          0.000GB
+local           0.000GB
+thapatechnical  0.000GB
+> use thapatechnical
+switched to db thapatechnical
+> show collections
+thapadata
+> db.thapadata.find()
+{ "_id" : ObjectId("64f09c199060ad2bd7c5209f"), "name" : "ReactJS", "type" : "Front End", "videos" : 80, "active" : false }
+{ "_id" : ObjectId("64f09c3a9060ad2bd7c520a0"), "name" : "ReactJS", "type" : "Front End", "videos" : 80, "active" : false }
+{ "_id" : ObjectId("64f1740f8da8aea393fe9c7e"), "name" : "mongodb", "type" : "database", "videos" : 47, "active" : true }
+{ "_id" : ObjectId("64f174b68da8aea393fe9c7f"), "name" : "Nodejs", "type" : "Backend", "videos" : 40, "active" : true }
+{ "_id" : ObjectId("64f174b68da8aea393fe9c80"), "name" : "Javascript", "type" : "Full Stack" }
+{ "_id" : ObjectId("64f174d78da8aea393fe9c81"), "name" : "Nodejs", "type" : "Backend", "videos" : 40, "active" : true }
+{ "_id" : ObjectId("64f174d78da8aea393fe9c82"), "name" : "Javascript", "type" : "Scripting", "videos" : 50, "active" : true }
+> db.thapadata.deleteMany({name:"ReactJS"})find()
+2023-09-01T13:09:27.669+0530 E  QUERY    [js] uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:41
+> db.thapadata.deleteMany({name:"ReactJS"}).find()
+2023-09-01T13:09:38.008+0530 E  QUERY    [js] uncaught exception: TypeError: db.thapadata.deleteMany(...).find is not a function :
+@(shell):1:1
+> db.thapadata.deleteMany({name:"ReactJS"})
+{ "acknowledged" : true, "deletedCount" : 0 }
+> db.thapadata.deleteMany({type:""Front End})
+2023-09-01T13:10:36.407+0530 E  QUERY    [js] uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:32
+> db.thapadata.deleteMany({type:"Front End"})
+{ "acknowledged" : true, "deletedCount" : 0 }
+> db.thapadata.deleteMany({type:"Backend"})
+{ "acknowledged" : true, "deletedCount" : 2 }
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174b68da8aea393fe9c80"),
+        "name" : "Javascript",
+        "type" : "Full Stack"
+}
+{
+        "_id" : ObjectId("64f174d78da8aea393fe9c82"),
+        "name" : "Javascript",
+        "type" : "Scripting",
+        "videos" : 50,
+        "active" : true
+}
+> db.thapadata.deleteMany({type:"Scripting"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174b68da8aea393fe9c80"),
+        "name" : "Javascript",
+        "type" : "Full Stack"
+}
+> db.thapadata.insertMany({name:"ReactJS",type:"Frontend",videos:100,active:true},{name:"Nodejs",type:"Backend",videos:47,active:true})
+2023-09-01T13:14:42.911+0530 E  QUERY    [js] uncaught exception: TypeError: documents.map is not a function :
+DBCollection.prototype.insertMany@src/mongo/shell/crud_api.js:307:17
+@(shell):1:1
+> db.thapadata.insertMany([{name:"ReactJS",type:"Frontend",videos:100,active:true},{name:"Nodejs",type:"Backend",videos:47,active:true}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("64f1969802ddb5f137e88629"),
+                ObjectId("64f1969802ddb5f137e8862a")
+        ]
+}
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f174b68da8aea393fe9c80"),
+        "name" : "Javascript",
+        "type" : "Full Stack"
+}
+{
+        "_id" : ObjectId("64f1969802ddb5f137e88629"),
+        "name" : "ReactJS",
+        "type" : "Frontend",
+        "videos" : 100,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1969802ddb5f137e8862a"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 47,
+        "active" : true
+}
+> db.thapadata.deleteMany({type:"Full Stack"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1969802ddb5f137e88629"),
+        "name" : "ReactJS",
+        "type" : "Frontend",
+        "videos" : 100,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1969802ddb5f137e8862a"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 47,
+        "active" : true
+}
+> db.thapadata.insertOne({name:"DBMS",type:"database",videos:40,active:true})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("64f197d602ddb5f137e8862b")
+}
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f1740f8da8aea393fe9c7e"),
+        "name" : "mongodb",
+        "type" : "database",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1969802ddb5f137e88629"),
+        "name" : "ReactJS",
+        "type" : "Frontend",
+        "videos" : 100,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1969802ddb5f137e8862a"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f197d602ddb5f137e8862b"),
+        "name" : "DBMS",
+        "type" : "database",
+        "videos" : 40,
+        "active" : true
+}
+> db.thapadata.deleteOne({type:"database"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.thapadata.find().pretty()
+{
+        "_id" : ObjectId("64f1969802ddb5f137e88629"),
+        "name" : "ReactJS",
+        "type" : "Frontend",
+        "videos" : 100,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f1969802ddb5f137e8862a"),
+        "name" : "Nodejs",
+        "type" : "Backend",
+        "videos" : 47,
+        "active" : true
+}
+{
+        "_id" : ObjectId("64f197d602ddb5f137e8862b"),
+        "name" : "DBMS",
+        "type" : "database",
+        "videos" : 40,
+        "active" : true
+}
+>
